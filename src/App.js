@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // (Make material-ui happy)
 import SearchBox from './SearchBox';
+import makeSearchBoxShake from './search-box-controller';
 import makeMoveUp from './move-up-animation';
-import makeExpanding from './expanding-animation';
 import makeSpringUp from './spring-up-animation';
-import makeValidationErrorAnimation from './shake-animation';
 
+// const MoveUpSearchBox = makeMoveUp(SearchBox);
+// const WobblySearchBox = makeSpringUp(SearchBox);
 const MoveUpSearchBox = makeMoveUp(SearchBox);
-const ExpandingSearchBox = makeExpanding(SearchBox);
 const WobblySearchBox = makeSpringUp(SearchBox);
-const ErrorBox = makeValidationErrorAnimation(SearchBox);
+const AnimatedSearchBox = makeSearchBoxShake(SearchBox);
 
 class App extends Component {
     render() {
@@ -25,7 +25,7 @@ class App extends Component {
         return (
             <MuiThemeProvider>
                 <div style={style}>
-                    <ErrorBox/>
+                    <AnimatedSearchBox/>
                 </div>
             </MuiThemeProvider>
         );
