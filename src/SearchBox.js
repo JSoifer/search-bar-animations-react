@@ -26,7 +26,7 @@ const baseStyles = {
   }
 };
 
-const SearchBox = ({ isOpen, query, onClick, onSubmit, onQueryUpdate, additionalStyles, frameClass  }) => {
+const SearchBox = ({ isOpen, query, onClick, onSubmit, onQueryUpdate, additionalStyles, additionalStyles2, frameClass }) => {
   const handleKeyDown = (event) => {
     if (event.keyCode === 13) {
       event.preventDefault();
@@ -37,7 +37,7 @@ const SearchBox = ({ isOpen, query, onClick, onSubmit, onQueryUpdate, additional
   let textStyle = isOpen ? baseStyles.open : baseStyles.closed;
   textStyle = Object.assign(textStyle, additionalStyles ? additionalStyles.text : {});
 
-  const divStyle = Object.assign({}, textStyle, baseStyles.frame, additionalStyles ? additionalStyles.frame : {});
+  const divStyle = Object.assign({}, textStyle, additionalStyles2, baseStyles.frame, additionalStyles ? additionalStyles.frame : {});
   divStyle.width += baseStyles.icon.width + 5;
 
   return (

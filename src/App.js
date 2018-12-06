@@ -20,12 +20,18 @@ class App extends Component {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '80vh'
         };
 
         return (
             <MuiThemeProvider>
                 <div style={style}>
                     <AnimatedSearchBox/>
+                    <WobblySearchBox/>
+                    <MoveUpSearchBox/>
                 </div>
             </MuiThemeProvider>
         );
