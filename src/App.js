@@ -5,36 +5,62 @@ import SearchBox from './SearchBox';
 import makeSearchBoxShake from './search-box-controller';
 import makeMoveUp from './move-up-animation';
 import makeSpringUp from './spring-up-animation';
+import MenuButton from './MenuButton';
+import Menu from './Menu';
 
-// const MoveUpSearchBox = makeMoveUp(SearchBox);
-// const WobblySearchBox = makeSpringUp(SearchBox);
 const MoveUpSearchBox = makeMoveUp(SearchBox);
 const WobblySearchBox = makeSpringUp(SearchBox);
 const AnimatedSearchBox = makeSearchBoxShake(SearchBox);
 
 class App extends Component {
-    render() {
-        //https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/
-        const style = {
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            height: '80vh'
-        };
+  constructor(props, context) {
+    super(props, context);
 
-        return (
-            <MuiThemeProvider>
-                <div style={style}>
-                    <AnimatedSearchBox/>
-                    <WobblySearchBox/>
-                    <MoveUpSearchBox/>
-                </div>
-            </MuiThemeProvider>
-        );
-    }
+    this.state = {
+      visible: false
+    };
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
+  }
+  handleMouseDown(e) {
+    this.toggleMenu();
+
+    console.log("clicked");
+    e.stopPropagation();
+  }
+
+  toggleMenu() {
+    this.setState({
+      visible: !this.state.visible
+    });
+  }
+
+  render() {
+    const style = {
+      position: 'fixed',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      height: '80vh'
+    };
+
+    return (
+      <MuiThemeProvider>
+        <MenuButton handleMouseDown={this.handleMouseDown}/>
+        <Menu
+          handleMouseDown={this.handleMouseDown}
+          menuVisibility={this.state.visible}
+        />
+        <div style={style}>
+          <AnimatedSearchBox/>
+          <WobblySearchBox/>
+          <MoveUpSearchBox/>
+        </div>
+      </MuiThemeProvider>
+    );
+  }
 }
 export default App;
