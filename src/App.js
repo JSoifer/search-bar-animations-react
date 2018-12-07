@@ -24,8 +24,6 @@ class App extends Component {
   }
   handleMouseDown(e) {
     this.toggleMenu();
-
-    console.log("clicked");
     e.stopPropagation();
   }
 
@@ -48,18 +46,20 @@ class App extends Component {
     };
 
     return (
-      <MuiThemeProvider>
+      <div>
         <MenuButton handleMouseDown={this.handleMouseDown}/>
         <Menu
           handleMouseDown={this.handleMouseDown}
           menuVisibility={this.state.visible}
         />
-        <div style={style}>
-          <AnimatedSearchBox/>
-          <WobblySearchBox/>
-          <MoveUpSearchBox/>
-        </div>
-      </MuiThemeProvider>
+        <MuiThemeProvider>
+          <div style={style}>
+            <AnimatedSearchBox/>
+            <WobblySearchBox/>
+            <MoveUpSearchBox/>
+          </div>
+        </MuiThemeProvider>
+      </div>
     );
   }
 }

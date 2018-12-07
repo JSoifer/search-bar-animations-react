@@ -1,21 +1,21 @@
 #flyoutMenu {
-  width: 20vw;
-  max-width: 200px;
-  min-width: 160px;
+  width: 20%;
   height: 40vh;
   background-color: lightYellow;
   position: fixed;
+  padding-top: 120px;
   top: -20px;
   left: -20px;
   transition: transform .3s
               cubic-bezier(0, .52, 0, 1);
   overflow: scroll;
-  z-index: 1000;
+  z-index: 500;
   border-radius: 20px;
 }
 
 #flyoutMenu.hide {
-  transform: translate3d(-100vw, 0, 0);
+  transform: translate3d(-20vw, 0, 0);
+  overflow: hidden;
 }
 
 #flyoutMenu.show {
@@ -26,7 +26,6 @@
 #flyoutMenu h2 a {
   color: #333;
   margin-left: 50px;
-  margin-top: 30px;
   text-decoration: none;
 }
 

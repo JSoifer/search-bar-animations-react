@@ -9,6 +9,8 @@
   transition: all .2s cubic-bezier(0, 1.26, .8, 1.28);
   margin-left: 20px;
   margin-top: 20px;
+  z-index: 1000;
+  position: fixed;
 }
 
 #roundButton:hover {
